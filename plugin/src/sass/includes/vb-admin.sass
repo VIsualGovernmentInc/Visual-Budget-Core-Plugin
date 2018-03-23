@@ -1,0 +1,245 @@
+/**
+ * All of the CSS for admin-specific functionality is
+ * included in this file.
+ ------------------------------------------------------- */
+
+/* Global admin CSS
+ ------------------------------------------------------- */
+
+.vb-admin-title
+    span a
+        font-size: .7em;
+        color: #85a9bf;
+        margin-left: .5em;
+
+
+/* Visualizations tab
+ ------------------------------------------------------- */
+
+.vb-shortcode
+    margin-top: 1em;
+
+.vb-metrics-table
+    width: 80%;
+
+    .vb-metrics-table td
+        padding: 1em;
+        width: 20%;
+
+.vb-dataset-select-wrapper
+    margin: 2em 0 3em;
+
+
+
+/* Data tables on the "Datasets" tab
+ ------------------------------------------------------- */
+
+/* Dataset listings div */
+.dataset-listings
+    a.tablelink
+        color: #6a778d;
+        text-decoration: none;
+
+        &:visited,
+        &:hover,
+        &:focus,
+        &:active
+            text-decoration: none;
+
+    /* The dataset preview/corner table */
+    table
+        background-color: #f9f9f9;
+
+        &:hover
+            background-color: #fdfdfd;
+
+        th, td
+            text-align: left;
+
+/* Glyphicons in the info section */
+.dataset-info
+    span.glyphicon
+        margin-right: 5px;
+
+    /* Dataset actions buttons */
+    .dataset-actions
+        a
+            &:visited,
+            &:hover,
+            &:focus,
+            &:active
+                text-decoration: none;
+
+        .label-danger:hover
+            background-color: #b52f2b; /* #d9534f */
+
+/* The modal table */
+.jquerymodal table
+    margin: 0 !important;
+
+    td, th
+        text-align: left;
+
+    .tablecell
+        max-height: 4em;
+        overflow: scroll;
+
+.dataset-listings table,
+.jquerymodal table
+    counter-reset: rowNumber;
+
+    tr
+        counter-increment: rowNumber;
+
+        th:first-child::before,
+        td:first-child::before,
+            content: counter(rowNumber);
+            position: absolute;
+            min-width: 1em;
+            margin-right: 0.5em;
+            font-weight: normal;
+
+
+/* Positioning for the preview/corner table */
+.dataset-listings table tr
+    td:first-child::before,
+    th:first-child::before
+        left: 0px;
+
+/* Positioning for the modal table */
+.jquerymodal table tr
+    td:first-child::before,
+    th:first-child::before
+        position: fixed;
+        margin-left: -28px;
+        color: transparent; /*color: white;*/
+
+
+
+/* Visualizations tab
+ ------------------------------------------------------- */
+
+.hidden
+    display: none;
+
+.vb-chart-wrapper
+    margin: 1em auto;
+
+.vb-chart-wrapper-metric
+    font-size: 1.3em;
+    text-align: center;
+
+    .vb-chart
+        padding: .3em;
+
+.vb-shortcode-wrapper
+    margin: 1em 0;
+
+    .vb-shortcode
+        margin: .5em 0;
+
+.vb-dataset-select-wrapper
+    text-align: center;
+    margin: 1em 0;
+
+    .vb-dataset-select
+        width: 20em;
+
+.tab-content
+    padding: 0 5em;
+
+
+
+/* Side tabs, from
+ * http://stackoverflow.com/a/26394641
+ ------------------------------------------------------- */
+
+.tabs-below > .nav-tabs,
+.tabs-right > .nav-tabs,
+.tabs-left > .nav-tabs
+    border-bottom: 0;
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane
+    display: none;
+
+.tab-content > .active,
+.pill-content > .active
+    display: block;
+
+.tabs-below > .nav-tabs
+    border-top: 1px solid #ddd;
+
+.tabs-below > .nav-tabs > li
+    margin-top: -1px;
+    margin-bottom: 0;
+
+.tabs-below > .nav-tabs > li > a
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+
+.tabs-below > .nav-tabs > li > a:hover,
+.tabs-below > .nav-tabs > li > a:focus
+    border-top-color: #ddd;
+    border-bottom-color: transparent;
+
+.tabs-below > .nav-tabs > .active > a,
+.tabs-below > .nav-tabs > .active > a:hover,
+.tabs-below > .nav-tabs > .active > a:focus
+    border-color: transparent #ddd #ddd #ddd;
+
+.tabs-left > .nav-tabs > li,
+.tabs-right > .nav-tabs > li
+    float: none;
+
+.tabs-left > .nav-tabs > li > a,
+.tabs-right > .nav-tabs > li > a
+    min-width: 74px;
+    margin-right: 0;
+    margin-bottom: 3px;
+
+.tabs-left > .nav-tabs
+    float: left;
+    margin-right: 19px;
+    border-right: 1px solid #ddd;
+
+.tabs-left > .nav-tabs > li > a
+    margin-right: -1px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+
+.tabs-left > .nav-tabs > li > a:hover,
+.tabs-left > .nav-tabs > li > a:focus
+    border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+
+.tabs-left > .nav-tabs .active > a,
+.tabs-left > .nav-tabs .active > a:hover,
+.tabs-left > .nav-tabs .active > a:focus
+    border-color: #ddd transparent #ddd #ddd;
+    *border-right-color: #ffffff;
+
+.tabs-right > .nav-tabs
+    float: right;
+    margin-left: 19px;
+    border-left: 1px solid #ddd;
+
+.tabs-right > .nav-tabs > li > a
+    margin-left: -1px;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+
+.tabs-right > .nav-tabs > li > a:hover,
+.tabs-right > .nav-tabs > li > a:focus
+    border-color: #eeeeee #eeeeee #eeeeee #dddddd;
+
+.tabs-right > .nav-tabs .active > a,
+.tabs-right > .nav-tabs .active > a:hover,
+.tabs-right > .nav-tabs .active > a:focus
+    border-color: #ddd #ddd #ddd transparent;
+    *border-left-color: #ffffff;
+
+.tab-content
+    overflow: hidden;

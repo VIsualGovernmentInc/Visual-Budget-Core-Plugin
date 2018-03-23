@@ -1,0 +1,404 @@
+/* All charts
+ ------------------------------------------------------- */
+
+.vb-chart
+    background: white;
+    margin: 0 auto;
+
+
+/* Line chart
+ ------------------------------------------------------- */
+
+.vb-chart-linechart
+    height: 240px;
+    width: 100%;
+
+    .svg-chart
+        pointer-events: all;
+
+    .click-capture
+        &:hover
+            cursor: pointer;
+
+    path
+        stroke: steelblue;
+        stroke-width: 3;
+        opactity: 0.7;
+        fill: none;
+
+    .circles-line
+        circle
+            fill: darken(steelblue, 10%);
+
+    .axis
+        path, line
+            fill: none;
+            stroke: grey;
+            stroke-width: 1;
+            shape-rendering: crispEdges;
+
+    .hoverline
+        stroke: #555;
+        opacity: 0.4;
+        stroke-width: 2;
+        shape-rendering: optimizeSpeed;
+
+    .hidden
+        opacity: 0;
+
+
+/* Stacked area chart
+ ------------------------------------------------------- */
+
+.vb-chart-stackedarea
+    height: 240px;
+    width: 100%;
+
+    .svg-chart
+        pointer-events: all;
+
+    .click-capture
+        &:hover
+            cursor: pointer;
+
+    path
+        stroke: #444;
+        stroke-width: 2;
+        opactity: 0.7;
+        fill: none;
+
+    .circles-line
+        circle
+            fill: darken(#444, 10%);
+
+    .axis
+        path, line
+            fill: none;
+            stroke: grey;
+            stroke-width: 1;
+            shape-rendering: crispEdges;
+
+    .hoverline
+        stroke: #444;
+        opacity: 0.7;
+        stroke-width: 1;
+        shape-rendering: optimizeSpeed;
+
+    .hidden
+        opacity: 0;
+
+    .multiarea, .multibar
+        fill-opacity: 0.8;
+        stroke: none;
+
+    .multiline
+        fill: none;
+        stroke-width: 2px;
+        opacity: 1;
+
+    .multiaxis path
+        stroke-width: 0;
+        fill: none;
+
+    .multigrid .tick
+        stroke: lightgray;
+        opacity: 0;
+
+    .multigrid path
+        stroke-width: 1;
+
+    .layerLine, .sideShadow
+        box-shadow: -3px 0px 8px black;
+        margin-left: 10px;
+
+
+/* Comparison
+ ------------------------------------------------------- */
+
+.vb-chart-comparisontime
+    height: 240px;
+    width: 100%;
+
+    .axis
+        path, line
+            fill: none;
+            stroke: grey;
+            stroke-width: 1;
+            shape-rendering: crispEdges;
+
+    .hidden
+        opacity: 0;
+
+
+/* Treemap
+ ------------------------------------------------------- */
+
+.vb-chart-treemap
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    margin-bottom: 3.5em;
+    position: relative;
+    height: 300px;
+    width: 100%;
+    /* max-width: 500px;      */
+    /* font: 10px sans-serif; */
+
+    svg
+        position: relative;
+        overflow: hidden;
+        width: 100%
+
+    rect
+        fill: none;
+        stroke: #fff;
+
+    // text
+      // font-size: 1.2em;
+
+    rect.parent,
+    .grandparent rect
+        stroke-width: 4px;
+
+    .treemap-item rect
+        opacity: 0.6;
+
+    .treemap-item:hover rect,
+    .grandparent:hover rect
+        opacity: 0.9;
+
+    .treemap-item           // .children
+        cursor: pointer;
+        position: relative;
+
+    .no-label
+        .titleLabel, .valueLabel, text
+            display: none;
+
+    .no-value .valueLabel
+        display: none;
+
+    .textdiv
+        padding: 8px;
+        font: .8em sans-serif;
+        /*font-family: 'Strait', sans-serif;*/
+
+        .titleLabel,
+        .valueLabel
+            overflow: hidden;
+            /* position: relative; */
+            text-overflow: ellipsis;
+
+    foreignObject
+        pointer-events: none;
+        overflow: hidden;
+
+
+/* Back button
+ ------------------------------------------------------- */
+
+.vb-zoom-button
+    cursor: pointer;
+    text-align: center;
+    padding: .2em 0;
+    margin: .5em 2px .5em;
+    color: #555;
+    background-color: #f5f5f5;;
+    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-repeat: repeat-x;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+
+    &.disabled
+        background-image: none;
+        opacity: 0.65;
+        box-shadow: none;
+
+    &:hover
+        background-position: 0 -55px;
+        transition: background 0.1s linear;
+
+
+/* Legend
+ ------------------------------------------------------- */
+
+.vb-chart-legend
+    ul
+        li
+            list-style-position: inside;
+            padding-left: 26px;
+            list-style: none;
+            background-image: none;
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: 16px;
+
+
+/* Tabular
+ ------------------------------------------------------- */
+.vb-chart-table
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+.vb-table-element
+    display: table;
+    table-layout: fixed;
+    min-width: 100%;
+
+.tablerow
+    cursor: pointer;
+    display: table-row;
+
+    .value
+        vertical-align: middle;
+
+    &.atomic .expand-icon
+        display: none;
+
+    &.tableheader:hover
+        background-color: #ffffff;
+
+    .value
+        text-align: center;
+        width: 120px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: table-cell;
+        border-bottom: 1px solid #aaa;
+        padding: 4px 7px;
+
+        &.long
+            width: 250px;
+
+        &.textleft
+            text-align: left;
+
+        &.textright
+            text-align: right;
+
+        &.numeric
+            font-family: "Georgia";
+
+        &.head
+            font-weight: bold;
+
+        .bullet
+            width: 20px;
+            vertical-align: top;
+            display: inline-block;
+            
+            &.hidden
+                opacity: 0;
+
+    &:hover
+        background-color: #ebebeb;
+
+    .sparkline
+        line-height: 0px;
+
+        .line
+            stroke-width: 1px;
+
+        svg rect
+            fill: white;
+            opacity: 0.001;
+
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+    .tablerow .value
+        width: 120px;
+    .tablerow .value.long
+        width: 220px;
+    .tablerow .value.parent
+        width: 150px;
+
+
+/* My tax bill
+ ------------------------------------------------------- */
+
+.vb-chart-mytaxbill
+
+    span
+        font-size: 1.2em;
+        padding: 0 .3em;
+
+    input
+        width: 5em !important; // WordPress has styles of its own..
+        padding: .2em .4em !important;
+
+        &::placeholder
+            color: #bbb;
+
+
+/* Tooltips, from
+ * https://rawgit.com/Caged/d3-tip/master/examples/example-styles.css
+ ------------------------------------------------------- */
+
+.d3-tip
+    font-size: .8em;
+    padding: 0;
+    background: #fff;
+    color: #333;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+    pointer-events: none;
+    max-width: 25em;
+    box-shadow: 0 0 5px #ddd;
+
+    .name
+        padding: .4em .6em .3em;
+        background-color: #f2f2f2;
+
+    .description
+        padding: .4em .6em .3em;
+        border-top: 1px solid #ccc;
+
+
+
+    /* Creates a small triangle extender for the tooltip */
+    &:after
+        box-sizing: border-box;
+        display: inline;
+        font-size: 10px;
+        width: 100%;
+        line-height: 1;
+        color: #fff;
+        position: absolute;
+        pointer-events: none;
+
+    /* Northward tooltips */
+    &.n:after
+        content: "\25BC";
+        margin: -1px 0 0 0;
+        top: 100%;
+        left: 0;
+        text-align: center;
+        text-shadow: 0 2px #aaa;
+
+
+    /* Eastward tooltips */
+    &.e:after
+        content: "\25C0";
+        margin: -4px 0 0 0;
+        top: 50%;
+        left: -8px;
+        text-shadow: 2px 0 #aaa;
+
+
+    /* Southward tooltips */
+    &.s:after
+        content: "\25B2";
+        margin: 0 0 1px 0;
+        top: -8px;
+        left: 0;
+        text-align: center;
+        text-shadow: 0 -2px #aaa;
+
+
+    /* Westward tooltips */
+    &.w:after
+        content: "\25B6";
+        margin: -4px 0 0 -1px;
+        top: 50%;
+        left: 100%;
+        text-shadow: 2px 0 #aaa;
