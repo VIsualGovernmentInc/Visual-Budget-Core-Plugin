@@ -18,7 +18,7 @@ const paths = {
 
 // Edit this to be the path to the plugins folder
 // of your local WordPress install.
-paths.pluginExport = '/Users/hrothgar/Desktop/vb/wordpress/wp-content/plugins/';
+paths.pluginExport = '/mnt/d/public_html/dover/wp-content/plugins/';
 
 /* ------------------------------------------------------------------------ */
 /*

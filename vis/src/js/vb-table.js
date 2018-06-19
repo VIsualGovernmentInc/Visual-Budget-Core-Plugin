@@ -33,7 +33,7 @@ class VbTable extends VbChart {
 
     redraw() {
         console.log('Drawing chart ' + this.atts.hash + ' (table).');
-        this.initialize(this.$table, this.data);        
+        this.initialize(this.$table, this.data);
     }
 
     // Override the super class's method.
@@ -153,7 +153,7 @@ class VbTable extends VbChart {
                 value: function(node) {
                     let val = that.dollarAmountOfCurrentDate(node);
                     let total = that.dollarAmountOfCurrentDate();
-                    return that.formatPercentage(val/total*100, 0);
+                    return that.formatPercentage(val/total*100, 2); // 2.05 aj - added 2 decimal places
                 }
             },
             {
@@ -161,23 +161,26 @@ class VbTable extends VbChart {
                 cellClass: "value textright",
                 value: function(node) {
                     let date = that.state.date;
-                    let percent = that.formatPercentage(100);
+                    // let percent = that.formatPercentage(100);
+                    let percent = "N/A";
 
                     // Check to see if the previous year existed.
-                    // If not, percent will be "N/A";
+                    // 2.05 aj - Changed 1st year growht from 100% to N/A
                     if (that.getFirstDate() <= date-1) {
                         let cur = that.dollarAmountOfDate(date, node);
                         let prev = that.dollarAmountOfDate(date-1, node);
                         let pct = (cur - prev) / prev * 100;
-                        
+
                         // If we divided by zero, we'll say 100% growth.
-                        if (!pct && pct !== 0) {
-                            percent = '';
-                        } else {
-                            percent = that.formatPercentage(pct);
+                        // if (!pct && pct !== 0) {
+                        //    percent = '';
+                        // } else {
+                        //     percent = that.formatPercentage(pct);
+                        // }
+                        if ( isFinite(pct) ) {
+                          percent = that.formatPercentage(pct);
                         }
                     }
-
                     return percent;
                 }
             }
@@ -265,7 +268,7 @@ class VbTable extends VbChart {
             }
         });
 
-        // attach click event 
+        // attach click event
         rendered.click(this.rowClick(this));
 
         return rendered;

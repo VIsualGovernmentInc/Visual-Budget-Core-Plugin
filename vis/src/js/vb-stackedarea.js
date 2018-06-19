@@ -103,8 +103,18 @@ class VbStackedArea extends VbChart {
 
         // Define the axes
         // only show the year in the x-axis, not the month
-        let ticks_count = chart.xwidth < 390 ? 2 : null;
-        let xAxis = d3.axisBottom().scale(x).ticks(ticks_count);
+        // let ticks_count = chart.xwidth < 390 ? 2 : null;
+        // 2.05 aj - set ticks_count to change intervals depending on # of data points
+        // and the chart width, but no more than the number of data points
+        // chart.width / 50 was determined empirically
+        let ticks_count = Math.min(Math.round(chart.width / 50),data.dollarAmounts.length-1); // 2.05 aj - adjust tick lable counts to width
+        // console.log("# of dollar amounts: ",data.dollarAmounts.length);
+        // console.log('chart.xwidth is '+chart.xwidth)
+        // console.log('ticks_count is '+ticks_count);
+        let xAxis = d3.axisBottom()
+                  .scale(x)
+                  .ticks(ticks_count)
+                  .tickFormat(d3.timeFormat("%Y"));
         let yAxis = d3.axisLeft().scale(y)
                         .tickFormat(val => '$' + that.nFormat(val, 0));
 
@@ -144,10 +154,17 @@ class VbStackedArea extends VbChart {
         }
 
         // Add the X Axis
+        let xoffset = 0;
+        if( !this.isSmooth()) {
+            xoffset = (chart.width / data.dollarAmounts.length) / 2.5;
+        }
+        console.log("x offset = "+ xoffset);
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + chart.yheight + ")")
-            .call(xAxis);
+            .call(xAxis)
+            .selectAll("text")
+              .attr("transform","translate("+xoffset+",0)")
 
         // Add the Y Axis
         svg.append("g")
