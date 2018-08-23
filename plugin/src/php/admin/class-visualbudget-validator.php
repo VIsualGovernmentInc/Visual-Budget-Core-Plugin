@@ -8,6 +8,7 @@
  * CSV or JSON? Second, the validation with respect to the
  * Visual Budget data specification.
  */
+
 class VisualBudget_Validator {
 
     /**
@@ -113,6 +114,7 @@ class VisualBudget_Validator {
      */
     public function sanitize_data($data_array) {
         // The sequence of these events is important!
+        $data_array = $this->remove_empty_rows($data_array); // run first to get rid of trailing CSV row from Excel save-as
         $data_array = $this->pad_to_rectangle($data_array);
         $data_array = $this->trim_all_elements($data_array);
         $data_array = $this->remove_empty_rows($data_array);
@@ -126,6 +128,7 @@ class VisualBudget_Validator {
 
         return $data_array;
     }
+
 
     /**
      * Pad an array to rectangle. This function always pads on the right.
