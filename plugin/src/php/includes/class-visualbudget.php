@@ -28,7 +28,7 @@ class VisualBudget {
         $this->set_locale();            // Set the locale, language.
         $this->define_admin_hooks();    // Admin hooks.
         $this->define_public_hooks();   // Public hooks.
-        $this->define_shortcodes();     // Define the VB shortcodes.
+        $this->define_shortcodes();     // Define the VB shortcodes. 
     }
 
     /**
@@ -38,7 +38,7 @@ class VisualBudget {
         $trailingslashit = function ($s) { return rtrim( $s, '/\\' ) . '/'; };
 
         define('VISUALBUDGET_SLUG', 'visualbudget' );
-        define('VISUALBUDGET_VERSION', '2.0' );
+        define('VISUALBUDGET_VERSION', '2.061' );
         define('VISUALBUDGET_GITHUB_LINK', 'https://github.com/goinvo/visualbudget' );
         define('VISUALBUDGET_DOCS_LINK', 'https://github.com/goinvo/visualbudget/tree/master/docs' );
 

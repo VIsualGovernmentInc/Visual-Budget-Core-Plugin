@@ -12,7 +12,7 @@
  * Plugin Name:       Visual Budget
  * Plugin URI:        http://visgov.com/plugin/
  * Description:       UNDER DEVELOPMENT - Easily visualize your town's budget. Includes tools to import budget data and to select and customize visualizations. See also the Visual Budget WordPress Theme, a theme specially tailored for display of town budgets.
- * Version:           2.05
+ * Version:           2.061
  * Author:            Involution Studios and Visual Government, Inc
  * Author URI:        http://goinvo.com/ and https://visgov.com
  * License:           GPL-2.0+
