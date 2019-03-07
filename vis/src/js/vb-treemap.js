@@ -1,8 +1,30 @@
-
+/*
+  The data object is:
+  data.name - file name of the dataset, without the .json extension
+  data.hash - unique hash ID
+  data.dollarAmounts[]
+    date - the year column header
+    dollarAmount - dollar amount for this
+  data.meta[]
+    SOURCE
+    SOURCE_URL
+    TOOLTIP
+  data.children[]
+    recursive, same as data
+*/
 class VbTreeMap extends VbChart {
 
     constructor($div, data, config) {
-
+      console.log('******************');
+      console.log("data:");
+      console.log(data);
+      console.log("data.dollarAmounts[]:");
+      console.log(data.dollarAmounts);
+      console.log("data.children[]: ");
+      console.log(data.children);
+      console.log("data.meta[]:");
+      console.log(data.meta);
+      console.log('******************');
         // Cast the data.
         data.dollarAmounts.forEach(function(d) {
             // d.date = Date.parse(d.date);
@@ -105,7 +127,7 @@ class VbTreeMap extends VbChart {
             return function(d) {
                 let html = "<div class='name'>" + d.data.name + "</div>";
                 let showMyContribution = that.getAttribute('showmycontribution');
-                
+
                 if(that.state.myTaxBill !== '' && showMyContribution) {
 
                     // Calculate the user's contribution as well as the
@@ -134,10 +156,28 @@ class VbTreeMap extends VbChart {
                             + taxesType + " taxes.)";
                     }
 
+                    // Add meta data
+                    let metaData = "";
+                    if ( d.data.meta.length > 0 ) {
+                      d.data.meta.forEach(function(m) {
+                        switch( m.name ) {
+                          case 'SOURCE':
+                            break;
+                          case 'SOURCE_URL':
+                            break;
+                          case 'TOOLTIP':
+                            metaData = metaData + "<div class='tooltip'>" + m.value + "</div>";
+                            break;
+                        }
+                        console.log(m.name+" "+m.value+"<br>");
+                      });
+                    }
+
                     // Put the HTML all together.
                     html = html + "<div class='description'>Your contribution is "
                                 + "$" + myContribution.toFixed(2) + "."
-                                + taxesNote + "</div>";
+                                + taxesNote + "</div>"
+                                + metaData;
                 }
                 return html;
             }

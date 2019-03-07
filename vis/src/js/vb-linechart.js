@@ -100,7 +100,11 @@ class VbLineChart extends VbChart {
         // Define the axes
         // only show the year in the x-axis, not the month
         let ticks_count = chart.xwidth < 390 ? 2 : null;
-        var xAxis = d3.axisBottom().scale(x).ticks(ticks_count);
+        // var xAxis = d3.axisBottom().scale(x).ticks(ticks_count);
+        var xAxis = d3.axisBottom() // line chart
+					.scale(x)
+					.ticks(d3.timeYear)
+					.tickFormat(d3.timeFormat("%Y")); // "%m/%d/%y"
         var yAxis = d3.axisLeft().scale(y)
                         .tickFormat(val => '$' + that.nFormat(val, 0));
 
@@ -113,14 +117,17 @@ class VbLineChart extends VbChart {
         // Scale the range of the data
         // x.domain(d3.extent(data.dollarAmounts.filter(inDateRange(null)),
         //     function(d) { return d.date; }));
-        x.domain(this.getDateRange())
+        // x.domain(this.getDateRange());
+        var dr1 = this.getDateRange();
+        // add a day to the max date on the line chart - forces display of the latest year
+        dr1[1] = new Date(Date.parse(dr1[1])+1000*60*60*5);
+        x.domain(dr1);
         y.domain([0, d3.max(data.dollarAmounts.filter(inDateRange(null)), d => d.dollarAmount)]);
 
         // Add the valueline path.
         svg.append("path")
             .attr("class", "line")
             .attr("d", valueline(data.dollarAmounts.filter(inDateRange(null))));
-
 
         // Plot points on the line.
         svg.selectAll("g.circles-line")
