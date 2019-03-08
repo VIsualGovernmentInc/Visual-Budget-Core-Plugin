@@ -41,7 +41,7 @@ class VbLegend extends VbChart {
                     + 'viewBox=\'0 0 10 10\'><circle fill=\''
                     + color.replace('#','%23') + '\' cx=\'5\' cy=\'5\' r=\'20\'></circle></svg>&quot;);';
 
-            return '<li style=\"' + style + '\">' + text + ' N</li>';
+            return '<li style=\"' + style + '\">' + text + '</li>';
         }
 
         let items = [];
