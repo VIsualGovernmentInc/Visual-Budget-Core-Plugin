@@ -18,7 +18,7 @@ const paths = {
 
 // Edit this to be the path to the plugins folder
 // of your local WordPress install.
-paths.pluginExport = '/mnt/d/public_html/siteroot/wp-content/plugins/';
+paths.pluginExport = '/mnt/d/public_html/devsite/wp-content/plugins/';
 
 /* ------------------------------------------------------------------------ */
 /*

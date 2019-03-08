@@ -34,14 +34,14 @@ class VbLegend extends VbChart {
      */
     drawLegend() {
         let node = this.getNodeByHash(this.state.hash) || this.data;
-
         let li = function(text, color) {
-            let style = 'background-image: url("data:image/svg+xml,'
-                + '<svg xmlns=\\"http://www.w3.org/2000/svg\\" '
-                + 'viewBox=\\"0 0 10 10\\"><circle fill=\\"'
-                + color + '\\" cx=\\"5\\" cy=\\"5\\" r=\\"5\\"/></svg>");';
+            // 2.061 - fixed background-image coding
+            let style = 'background-image:url(&quot;data:image/svg+xml,'
+                    + ' <svg xmlns=&#39http://www.w3.org/2000/svg&#39 '
+                    + 'viewBox=\'0 0 10 10\'><circle fill=\''
+                    + color.replace('#','%23') + '\' cx=\'5\' cy=\'5\' r=\'20\'></circle></svg>&quot;);';
 
-            return '<li style=\'' + style + '\'">' + text + '</li>';
+            return '<li style=\"' + style + '\">' + text + '</li>';
         }
 
         let items = [];

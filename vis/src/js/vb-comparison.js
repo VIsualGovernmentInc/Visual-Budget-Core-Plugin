@@ -82,7 +82,7 @@ class VbComparisonTime extends VbChart {
         let data  = this.data;
         let chart = this.chart;
         let svg   = this.svg;
- 
+
         // Set up the dimensions
         let x0 = d3.scaleBand()
             .rangeRound([0, chart.xwidth])
@@ -156,7 +156,9 @@ class VbComparisonTime extends VbChart {
         svg.append("g")
             .attr("class", "axis")
             .attr("transform", "translate(0," + chart.yheight + ")")
-            .call(d3.axisBottom(x0).ticks(ticks_count));
+            .call(d3.axisBottom(x0)
+            // .ticks(d3.timeYear)); // 2.06
+            .ticks(ticks_count));
             // FIXME: Why doesn't this ticks_count work?
 
         // Y axis

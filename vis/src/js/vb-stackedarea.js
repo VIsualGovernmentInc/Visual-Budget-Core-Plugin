@@ -107,13 +107,14 @@ class VbStackedArea extends VbChart {
         // 2.05 aj - set ticks_count to change intervals depending on # of data points
         // and the chart width, but no more than the number of data points
         // chart.width / 50 was determined empirically
-        let ticks_count = Math.min(Math.round(chart.width / 50),data.dollarAmounts.length-1); // 2.05 aj - adjust tick lable counts to width
+        let ticks_count = Math.min(Math.round(chart.width / 50),data.dollarAmounts.length-1); // 2.05 aj - adjust tick label counts to width
         // console.log("# of dollar amounts: ",data.dollarAmounts.length);
         // console.log('chart.xwidth is '+chart.xwidth)
         // console.log('ticks_count is '+ticks_count);
         let xAxis = d3.axisBottom()
                   .scale(x)
-                  .ticks(ticks_count)
+                  // .ticks(ticks_count)
+                  .ticks(d3.timeYear)
                   .tickFormat(d3.timeFormat("%Y"));
         let yAxis = d3.axisLeft().scale(y)
                         .tickFormat(val => '$' + that.nFormat(val, 0));
@@ -155,8 +156,9 @@ class VbStackedArea extends VbChart {
 
         // Add the X Axis
         let xoffset = 0;
+
         if( !this.isSmooth()) {
-            xoffset = (chart.width / data.dollarAmounts.length) / 2.5;
+            xoffset = (chart.width / data.dollarAmounts.length) / 10;
         }
         console.log("x offset = "+ xoffset);
         svg.append("g")
@@ -179,7 +181,10 @@ class VbStackedArea extends VbChart {
         // Without it, clicks above the line may not trigger the click event.
         svg.append('rect')
             .attr('class', 'click-capture')
-            .style('visibility', 'hidden')
+            // .style('visibility', 'hidden')
+            .style('border','3px solid red')
+            .style('background-color','none')
+            .style('opacity','.0') // 2.061 - set opacity to 0 to eliminate shaded background
             .attr('width', chart.width)
             .attr('height', chart.height);
 
@@ -338,6 +343,8 @@ class VbStackedArea extends VbChart {
             // This is a dummy array needed for the scaleband, just so it
             // knows how many bands there are. The values doesn't matter for us.
             let dummyArray = Array(data.dollarAmounts.length).fill().map((x,i)=>i);
+            console.log('dummyArray:')
+            console.log(dummyArray);
 
             let newx = d3.scaleBand()
                 .rangeRound([0, chart.xwidth])
